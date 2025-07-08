@@ -1,12 +1,12 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "Save and Commit",
-            "type": "shell",
-            "command": "git add . && git commit -m 'Auto commit'",
-            "group": "build",
-            "problemMatcher": []
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Save and Commit",
+      "type": "shell",
+      "command": "git add . && git commit -m 'Auto commit'",
+      "group": "build",
+      "problemMatcher": []
+    }
+  ]
 }
