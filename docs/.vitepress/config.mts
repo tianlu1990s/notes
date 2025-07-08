@@ -1,4 +1,54 @@
+// import { defineConfig } from 'vitepress';
+// .vitepress/config.mts
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 import { defineConfig } from 'vitepress';
+
+// 获取当前目录路径
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+// 从 Markdown 文件提取标题
+function getTitleFromMd(filePath: string): string {
+  const content = fs.readFileSync(filePath, 'utf-8');
+  const match = content.match(/^#\s+(.+)$/m);
+  return match ? match[1] : path.basename(filePath, '.md');
+}
+
+// 生成侧边栏项
+function generateSidebarItems(rootDir: string, basePath = ''): any[] {
+  const fullPath = path.join(__dirname, '../', rootDir, basePath);
+
+  return fs
+    .readdirSync(fullPath)
+    .filter((item) => !item.startsWith('.') && !item.startsWith('_'))
+    .sort((a, b) => {
+      // 按数字前缀排序 (01-, 02-)
+      const numA = parseInt(a.split('-')[0]) || 0;
+      const numB = parseInt(b.split('-')[0]) || 0;
+      return numA - numB;
+    })
+    .map((item) => {
+      const itemPath = path.join(fullPath, item);
+      const stat = fs.statSync(itemPath);
+
+      if (stat.isDirectory()) {
+        return {
+          text: item.replace(/-/g, ' '),
+          collapsible: true,
+          collapsed: false,
+          items: generateSidebarItems(rootDir, path.join(basePath, item)),
+        };
+      } else if (item.endsWith('.md') && item.toLowerCase() !== 'index.md') {
+        const linkPath = `/${path.join(rootDir, basePath, item.replace('.md', ''))}`;
+        return {
+          text: getTitleFromMd(itemPath),
+          link: linkPath,
+        };
+      }
+    })
+    .filter(Boolean) as any[];
+}
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -56,113 +106,103 @@ export default defineConfig({
       '/articles/os/debian': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/os/debian'),
         },
       ],
       '/articles/os/centos': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/os/centos'),
         },
       ],
       '/articles/os/windows': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/os/windows'),
         },
       ],
       '/articles/software/redis': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/software/redis'),
         },
       ],
       '/articles/software/mysql': [
         {
           text: '',
-          base: '/articles/software/haproxy/',
-          items: [
-            { text: 'HAProxy', link: 'haproxy' },
-            { text: '配置手册', link: 'manual' },
-            { text: 'FAQ', link: 'faq' },
-          ],
+          items: generateSidebarItems('articles/software/mysql'),
         },
       ],
       '/articles/software/sqlite': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/software/sqlite'),
         },
       ],
       '/articles/software/nginx': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/software/nginx'),
         },
       ],
       '/articles/software/haproxy': [
         {
           text: '',
-          base: '/articles/software/haproxy/',
-          items: [
-            { text: 'HAProxy', link: 'haproxy' },
-            { text: '配置手册', link: 'manual' },
-            { text: 'FAQ', link: 'faq' },
-          ],
+          items: generateSidebarItems('articles/software/haproxy'),
         },
       ],
       '/articles/software/git': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/software/git'),
         },
       ],
       '/articles/language/golang': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/language/golang'),
         },
       ],
       '/articles/language/c': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/language/c'),
         },
       ],
       '/articles/language/cpp': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/language/cpp'),
         },
       ],
       '/articles/cncf/docker': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/cncf/docker'),
         },
       ],
       '/articles/cncf/swarm': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/cncf/swarm'),
         },
       ],
       '/articles/cncf/kubernets': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/cncf/kubernets'),
         },
       ],
       '/articles/others/idea': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/others/idea'),
         },
       ],
       '/articles/others/sad': [
         {
           text: '',
-          items: [],
+          items: generateSidebarItems('articles/others/sad'),
         },
       ],
     },
