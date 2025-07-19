@@ -88,7 +88,7 @@ export default defineConfig({
       {
         text: 'CNCF',
         items: [
-          { text: 'Docker', link: '/articles/cncf/docker' },
+          { text: 'Docker', link: '/articles/cncf/docker/docker' },
           { text: 'Swarm', link: '/articles/cncf/swarm' },
           { text: 'Kubernets', link: '/articles/cncf/kubernets' },
         ],
