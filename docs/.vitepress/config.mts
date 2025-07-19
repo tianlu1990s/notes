@@ -63,43 +63,43 @@ export default defineConfig({
         text: 'OS',
         items: [
           { text: 'Debian', link: '/articles/os/debian/debian' },
-          { text: 'CentOS', link: '/articles/os/centos' },
-          { text: 'Windows', link: '/articles/os/windows' },
+          { text: 'CentOS', link: '/articles/os/centos/centos' },
+          { text: 'Windows', link: '/articles/os/windows/windows' },
         ],
       },
       {
         text: 'Software',
         items: [
-          { text: 'Redis', link: '/articles/software/redis' },
-          { text: 'MySQL', link: '/articles/software/mysql' },
-          { text: 'Sqlite', link: '/articles/software/sqlite' },
-          { text: 'Nginx', link: '/articles/software/nginx' },
+          { text: 'Redis', link: '/articles/software/redis/redis' },
+          { text: 'MySQL', link: '/articles/software/mysql/mysql' },
+          { text: 'Sqlite', link: '/articles/software/sqlite/sqlite' },
+          { text: 'Nginx', link: '/articles/software/nginx/nginx' },
           { text: 'HAProxy', link: '/articles/software/haproxy/haproxy' },
         ],
       },
       {
         text: 'Language',
         items: [
-          { text: 'Golang', link: '/articles/language/golang' },
-          { text: 'C', link: '/articles/language/c' },
-          { text: 'C++', link: '/articles/language/cpp' },
+          { text: 'Golang', link: '/articles/language/golang/golang' },
+          { text: 'C', link: '/articles/language/c/c' },
+          { text: 'C++', link: '/articles/language/cpp/cpp' },
         ],
       },
       {
         text: 'CNCF',
         items: [
           { text: 'Docker', link: '/articles/cncf/docker/docker' },
-          { text: 'Swarm', link: '/articles/cncf/swarm' },
-          { text: 'Kubernets', link: '/articles/cncf/kubernets' },
+          { text: 'Swarm', link: '/articles/cncf/swarm/swarm' },
+          { text: 'Kubernets', link: '/articles/cncf/kubernetes/kubernetes' },
         ],
       },
       {
         text: 'Course',
-        items: [{ text: 'SAD', link: '/articles/course/sad' }],
+        items: [{ text: 'SAD', link: '/articles/course/sad/sad' }],
       },
       {
         text: 'Others',
-        items: [{ text: 'Git', link: '/articles/others/git' }],
+        items: [{ text: 'Git', link: '/articles/others/git/git' }],
       },
     ],
     sidebar: {
@@ -190,7 +190,7 @@ export default defineConfig({
       '/articles/cncf/kubernets': [
         {
           text: '',
-          items: generateSidebarItems('articles/cncf/kubernets'),
+          items: generateSidebarItems('articles/cncf/kubernetes'),
         },
       ],
       '/articles/others/idea': [
