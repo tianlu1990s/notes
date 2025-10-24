@@ -1,0 +1,13 @@
+:root {  
+  --vp-layout-max-width: 100%;
+}
+
+.VPDoc.has-aside .content-container[data-v-10119189] {
+    max-width: 960px;
+}
+
+.content-container[data-v-10119189] {
+    contain-intrinsic-width: auto 10px;
+    margin: 0;
+}
+
