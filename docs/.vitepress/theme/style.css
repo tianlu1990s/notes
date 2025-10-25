@@ -2,12 +2,25 @@
   --vp-layout-max-width: 100%;
 }
 
-.VPDoc.has-aside .content-container[data-v-10119189] {
-    max-width: 960px;
+.VPDoc.has-aside .content-container {
+    max-width: 1200px !important;
 }
 
-.content-container[data-v-10119189] {
-    contain-intrinsic-width: auto 10px;
-    margin: 0;
+.content-container {
+    contain-intrinsic-width: auto 20px !important;
+    margin: 0 !important;
 }
 
+body {
+    line-height: 1.2;
+}
+
+/* 强制覆盖代码块所有相关元素 */
+div[class*="language-"],
+pre,
+code,
+.line-numbers-rows,
+.line-numbers-wrapper,
+.token {
+    line-height: 1.2 !important;
+}
