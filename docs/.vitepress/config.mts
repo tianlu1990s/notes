@@ -53,8 +53,14 @@ function generateSidebarItems(rootDir: string, basePath = ''): any[] {
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: 'Louis Notes',
-  description: 'A VitePress Site',
+  description: 'A Personal Notes',
   base: '/notes/',
+  head: [
+    ['link', { 
+      rel: 'icon', 
+      href: 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgZmlsbD0ibm9uZSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KPHJlY3Qgd2lkdGg9IjMyIiBoZWlnaHQ9IjMyIiByeD0iNiIgZmlsbD0iI0ZGNDU1NyIvPgo8cGF0aCBkPSJNMTYgMjMuNUwxNC4xIDIxLjZDMTEuOSAxOS4zIDggMTUuNSA4IDExLjVDOCA4LjcgMTAuMiA2LjUgMTMgNi41QzE0LjQgNi41IDE1LjggNy4yIDE2IDguMUMxNi4yIDcuMiAxNy42IDYuNSAxOSA2LjVDMjEuOCA2LjUgMjQgOC43IDI0IDExLjVDMjQgMTUuNSAyMC4xIDE5LjMgMTcuOSAyMS42TDE2IDIzLjVaIiBmaWxsPSJ3aGl0ZSIvPgo8L3N2Zz4K'
+    }]
+  ],
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
@@ -62,6 +68,7 @@ export default defineConfig({
       {
         text: 'OS',
         items: [
+          { text: 'Linux', link: '/articles/os/linux/linux' },
           { text: 'Debian', link: '/articles/os/debian/debian' },
           { text: 'CentOS', link: '/articles/os/centos/centos' },
           { text: 'Windows', link: '/articles/os/windows/windows' },
@@ -75,11 +82,13 @@ export default defineConfig({
           { text: 'Sqlite', link: '/articles/software/sqlite/sqlite' },
           { text: 'Nginx', link: '/articles/software/nginx/nginx' },
           { text: 'HAProxy', link: '/articles/software/haproxy/haproxy' },
+          { text: 'Kafka', link: '/articles/software/kafka/kafka' },
         ],
       },
       {
         text: 'Language',
         items: [
+          { text: 'Bash', link: '/articles/language/bash/bash' },
           { text: 'Golang', link: '/articles/language/golang/golang' },
           { text: 'C', link: '/articles/language/c/c' },
           { text: 'C++', link: '/articles/language/cpp/cpp' },
@@ -103,6 +112,12 @@ export default defineConfig({
       },
     ],
     sidebar: {
+      '/articles/os/linux': [
+        {
+          text: '',
+          items: generateSidebarItems('articles/os/linux'),
+        },
+      ],
       '/articles/os/debian': [
         {
           text: '',
@@ -151,10 +166,22 @@ export default defineConfig({
           items: generateSidebarItems('articles/software/haproxy'),
         },
       ],
+      '/articles/software/kafka': [
+        {
+          text: '',
+          items: generateSidebarItems('articles/software/kafka'),
+        },
+      ],
       '/articles/software/git': [
         {
           text: '',
           items: generateSidebarItems('articles/software/git'),
+        },
+      ],
+      '/articles/language/bash': [
+        {
+          text: '',
+          items: generateSidebarItems('articles/language/bash'),
         },
       ],
       '/articles/language/golang': [
