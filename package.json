@@ -1,15 +1,17 @@
 {
   "devDependencies": {
+    "@types/node": "^24.9.2",
     "prettier": "^3.6.2",
     "vitepress": "^1.6.3"
   },
   "scripts": {
-    "docs:dev": "vitepress dev docs",
+    "docs:dev": "vitepress dev docs --host",
     "docs:build": "vitepress build docs",
     "docs:preview": "vitepress preview docs"
   },
   "dependencies": {
     "fs": "^0.0.1-security",
+    "gray-matter": "^4.0.3",
     "path": "^0.12.7",
     "url": "^0.11.4"
   }

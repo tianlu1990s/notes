@@ -4,15 +4,15 @@ layout: home
 
 hero:
   name: "notes"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  text: "A Personal Notes"
+  tagline: "A Personal Notes"
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: Docker
+      link: /articles/cncf/docker/docker
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: Debian
+      link: /articles/os/debian/debian
 
 features:
   - title: Feature A
